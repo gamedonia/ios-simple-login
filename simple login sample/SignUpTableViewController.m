@@ -43,7 +43,7 @@
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.view addGestureRecognizer:tap];
-
+    
 }
 
 - (void) didReceiveMemoryWarning {
@@ -93,23 +93,28 @@
                                              
                                          } else {
                                              
-                                             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login failure" message:@"Invalid user name/password. Try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                             [alert show];
+                                             NSLog(@"Failed to login the user.");
+                                             
                                          }
                                      }];
                                  } else {
-
-                                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Register failure" message:@"Could not create the user. Email already in use or invalid." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                     [alert show];
+                                     
+                                     NSString *alertText;
+                                     NSString *alertTitle;
+                                     alertTitle = @"Register failure";
+                                     alertText = @"Could not create the user. Email already in use or invalid.";
+                                     [self showMessage:alertText withTitle:alertTitle];
                                  }
                              }];
-    }
-    else{
+    } else {
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Register failure" message:@"Fill all the fields with (*) correctly" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        NSString *alertText;
+        NSString *alertTitle;
+        alertTitle = @"Register failure";
+        alertText = @"Fill all the fields with (*) correctly.";
+        [self showMessage:alertText withTitle:alertTitle];
     }
-
+    
     
 }
 
@@ -139,6 +144,12 @@
 - (void) handleTap:(UITapGestureRecognizer *)recognizer {
     
     [self.view endEditing:YES];
+}
+
+-(void)showMessage:(NSString*)message withTitle:(NSString*)title{
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

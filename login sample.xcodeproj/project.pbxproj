@@ -11,6 +11,8 @@
 		9341AE8C1A9C946D00B4AC3D /* ResetPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9341AE8B1A9C946D00B4AC3D /* ResetPasswordTableViewController.m */; };
 		9341AE8F1A9C989500B4AC3D /* UserDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9341AE8E1A9C989500B4AC3D /* UserDetailsTableViewController.m */; };
 		9341AE921A9CC30900B4AC3D /* UDcustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9341AE911A9CC30900B4AC3D /* UDcustomSegue.m */; };
+		9351C1E71B131E0D00AC9074 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9351C1E61B131E0D00AC9074 /* FacebookSDK.framework */; };
+		9351C1E91B131F4B00AC9074 /* GamedoniaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9351C1E81B131F4B00AC9074 /* GamedoniaSDK.framework */; };
 		93625A6B1A9C720F000D53D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93625A6A1A9C720F000D53D6 /* main.m */; };
 		93625A6E1A9C720F000D53D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93625A6D1A9C720F000D53D6 /* AppDelegate.m */; };
 		93625A741A9C720F000D53D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93625A721A9C720F000D53D6 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		9341AE8E1A9C989500B4AC3D /* UserDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailsTableViewController.m; sourceTree = "<group>"; };
 		9341AE901A9CC30900B4AC3D /* UDcustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDcustomSegue.h; sourceTree = "<group>"; };
 		9341AE911A9CC30900B4AC3D /* UDcustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDcustomSegue.m; sourceTree = "<group>"; };
+		9351C1E61B131E0D00AC9074 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		9351C1E81B131F4B00AC9074 /* GamedoniaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GamedoniaSDK.framework; sourceTree = "<group>"; };
 		93625A651A9C720F000D53D6 /* login sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "login sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93625A691A9C720F000D53D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93625A6A1A9C720F000D53D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,7 +63,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9351C1E91B131F4B00AC9074 /* GamedoniaSDK.framework in Frameworks */,
 				93625A921A9C7328000D53D6 /* StoreKit.framework in Frameworks */,
+				9351C1E71B131E0D00AC9074 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +124,8 @@
 		93625A901A9C731B000D53D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9351C1E81B131F4B00AC9074 /* GamedoniaSDK.framework */,
+				9351C1E61B131E0D00AC9074 /* FacebookSDK.framework */,
 				93625A911A9C7328000D53D6 /* StoreKit.framework */,
 			);
 			name = Frameworks;

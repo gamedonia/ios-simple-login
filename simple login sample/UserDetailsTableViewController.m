@@ -21,7 +21,7 @@
 - (void) viewDidLoad {
     
     [super viewDidLoad];
-
+    
     float grey = (float) 238/255.0f;
     self.view.backgroundColor = [UIColor colorWithRed:(grey)
                                                 green:(grey)
@@ -50,7 +50,7 @@
             NSLog(@"Get me call failed.");
         }
     }];
-
+    
 }
 
 - (void) didReceiveMemoryWarning {
@@ -64,13 +64,12 @@
     [[Gamedonia users] logoutUser:^(BOOL success) {
         
         if (success) {
-
+            
             [[self navigationController] popToRootViewControllerAnimated:YES];
             
         } else {
-
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout failure" message:@"Something went wrong." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
+            
+            NSLog(@"Logout failed.");
         }
     }];
 }

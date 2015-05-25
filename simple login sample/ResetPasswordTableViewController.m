@@ -38,7 +38,7 @@
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.view addGestureRecognizer:tap];
-
+    
 }
 
 - (void) didReceiveMemoryWarning {
@@ -58,26 +58,32 @@
         [[Gamedonia users] resetPassword:mail
                                 callback:^(BOOL success) {
                                     
+                                    NSString *alertText;
+                                    NSString *alertTitle;
+                                    
                                     if (success) {
                                         
-                                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reset done" message:@"An email has been sent to your account." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                        [alert show];
+                                        alertTitle = @"Reset done";
+                                        alertText = @"An email has been sent to your account.";
+                                        [self showMessage:alertText withTitle:alertTitle];
                                         
                                     } else {
                                         
-                                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reset failure" message:@"The account doesn't exist." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                                        [alert show];
-                                        
+                                        alertTitle = @"Reset failure";
+                                        alertText = @"The account doesn't exist or something went wrong.";
+                                        [self showMessage:alertText withTitle:alertTitle];
                                     }
-        }];
+                                }];
     }
     else {
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Empty field" message:@"Fill in your email." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        NSString *alertText;
+        NSString *alertTitle;
+        alertTitle = @"Empty field";
+        alertText = @"Fill in your email.";
+        [self showMessage:alertText withTitle:alertTitle];
+        
     }
-
-    
 }
 
 - (IBAction) clickBack:(id)sender {
@@ -87,7 +93,7 @@
 
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
-
+    
     [textField resignFirstResponder];
     
     return YES;
@@ -96,6 +102,12 @@
 - (void) handleTap:(UITapGestureRecognizer *)recognizer {
     
     [self.view endEditing:YES];
+}
+
+-(void)showMessage:(NSString*)message withTitle:(NSString*)title{
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

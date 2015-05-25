@@ -39,7 +39,7 @@
     CurrentImage = [CurrentImage initWithImage:[UIImage imageNamed:@"background"]];
     CurrentImage.frame = self.view.bounds;
     
-    [self.tableView setBackgroundView:CurrentImage]; 
+    [self.tableView setBackgroundView:CurrentImage];
     
     
     _passTextField.secureTextEntry = YES;
@@ -73,7 +73,7 @@
         [[Gamedonia users] loginUserWithSessionToken:ses_token callback:^(BOOL success) {
             
             if(success) {
-
+                
                 [self performSegueWithIdentifier:@"goToUserDetails" sender:self];
             }
             else{
@@ -109,25 +109,32 @@
     mail = _eMailTextField.text;
     pass = _passTextField.text;
     
+    NSString *alertText;
+    NSString *alertTitle;
     
     if (![mail isEqual: @""] && ![pass isEqual:@""]) {
         
         [[Gamedonia users] loginUserWithEmail:mail password:pass callback:^(BOOL success) {
             
             if (success) {
-
+                
                 [self performSegueWithIdentifier:@"goToUserDetails" sender:sender];
+                
             } else {
-
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login failure" message:@"Invalid user name/password. Try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
+                
+                NSString *alertText;
+                NSString *alertTitle;
+                alertTitle = @"Login failure";
+                alertText = @"Invalid user name/password. Try again.";
+                [self showMessage:alertText withTitle:alertTitle];
             }
         }];
     }
     else {
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Empty fields" message:@"One or more fields are empty." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        alertTitle = @"Empty fields";
+        alertText = @"One or more fields are empty.";
+        [self showMessage:alertText withTitle:alertTitle];
     }
     
 }
@@ -207,7 +214,7 @@
                 
                 NSString *dateString = [NSString alloc];
                 dateString = [self getDate];
-                 
+                
                 [profile setValue:fb_name forKey:@"nickname"];
                 [profile setValue:dateString forKey:@"registerDate"];
                 
@@ -218,19 +225,19 @@
                 [[Gamedonia users] createUser:user
                                      callback:^(BOOL cr_success) {
                                          
-                            [[Gamedonia users] loginUserWithFacebook:fb_uid
-                                                       fbAccessToken:fb_access_token
-                                                            callback:^(BOOL success) {
-                                     if (success) {
+                                         [[Gamedonia users] loginUserWithFacebook:fb_uid
+                                                                    fbAccessToken:fb_access_token
+                                                                         callback:^(BOOL success) {
+                                                                             if (success) {
+                                                                                 
+                                                                                 [self performSegueWithIdentifier:@"goToUserDetails" sender:self];
+                                                                                 
+                                                                             } else {
+                                                                                 NSLog(@"Failed to login the user.");
+                                                                             }
+                                                                         }];
                                          
-                                            [self performSegueWithIdentifier:@"goToUserDetails" sender:self];
-                                         
-                                     } else {
-                                         NSLog(@"Failed to login the user.");
-                                     }
-                                 }];
-
-                }];
+                                     }];
                 
             } else {
                 // An error occurred, we need to handle the error
@@ -317,6 +324,7 @@
     
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
+    //cell.frame.size.height = view.frame.size.height;
     return cell;
 }
 
